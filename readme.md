@@ -21,6 +21,8 @@ $this->video->add_video('VIDEO_URL');
  * http://www.youtube.com/watch?v=JRfuAukYTKg
  * http://youtu.be/JRfuAukYTKg
  * https://vimeo.com/34035823
+ * 
+ * In any case it must contain the protocol
  **/
 
 $video_id = $this->video->get_video_id();
@@ -91,7 +93,7 @@ array(10) {
   ["stats_number_of_plays"] => int(109747)
   ["stats_number_of_comments"] => int(48)
   ["duration"] => int(246)
-  ["tags"] => string(87) "David Guetta, Titanium, Sia, David Wilson, Larkin Seiple, Iconoclast, Ryan Lee, Super 8"
+  ["tags"] => string(87) "David Guetta, Titanium, Sia (...)"
 }
 ```
 
