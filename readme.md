@@ -31,9 +31,11 @@ $video_type = $this->video->get_video_type(); // youtube or vimeo
 
 $video_url = $this->video->get_video_url();
 
+$video_embed_url = $this->video->get_video_embed_url();
+
 $video_embed = $this->video->get_embed_video();
 
-// you can also define the width and height of the embed html code
+// you can also define the width and height of the embed html code (this is optional)
 $video_embed = $this->video->get_embed_video(500, 280);
 
 $video_thumbs = $this->video->get_thumbs(); // Array

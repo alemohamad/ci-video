@@ -95,6 +95,25 @@ class Video {
     }
 
     /**
+     * Return embed url of video
+     *
+     * @access	public
+     * @return	string	video embed url
+     */
+    public function get_video_embed_url()
+    {
+        if(!$this->_verifyValidID()) { return FALSE; }
+
+        $id = $this->get_video_id();
+
+        if($this->_video_type == 'youtube') {
+            return 'http://www.youtube.com/embed/' . $id . '/';
+        } else if($this->_video_type == 'vimeo') {
+            return 'http://player.vimeo.com/video/' . $id . '?color=ffffff';
+        }
+    }
+
+    /**
      * Return Video HTML embed code
      *
      * @access	public
