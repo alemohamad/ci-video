@@ -183,34 +183,34 @@ class Video {
             $info = $video_info->entry;
 
             return array(
-                'title' => $info->{'media$group'}->{'media$title'}->{'$t'},
-                'description' => $info->{'media$group'}->{'media$description'}->{'$t'},
-                'author' => $info->{'media$group'}->{'media$credit'}[0]->{'yt$display'},
-                'mobile_url' => 'http://m.youtube.com/watch?v=' . $id,
-                'short_url' => 'http://youtu.be/' . $id,
-                'category' => $info->{'media$group'}->{'media$category'}[0]->label,
-                'duration' => $info->{'media$group'}->{'yt$duration'}->seconds,
-                'likes' => $info->{'yt$rating'}->numLikes,
-                'dislikes' => $info->{'yt$rating'}->numDislikes,
-                'favoriteCount' => $info->{'yt$statistics'}->favoriteCount,
-                'viewCount' => $info->{'yt$statistics'}->viewCount,
-                'commentsCount' => $info->{'gd$comments'}->{'gd$feedLink'}->countHint,
-                'rating' => $info->{'gd$rating'}->average
+                'title'         => (isset($info->{'media$group'}->{'media$title'}->{'$t'})) ? $info->{'media$group'}->{'media$title'}->{'$t'} : null,
+                'description'   => (isset($info->{'media$group'}->{'media$description'}->{'$t'})) ? $info->{'media$group'}->{'media$description'}->{'$t'} : null,
+                'author'        => (isset($info->{'media$group'}->{'media$credit'}[0]->{'yt$display'})) ? $info->{'media$group'}->{'media$credit'}[0]->{'yt$display'} : null,
+                'mobile_url'    => 'http://m.youtube.com/watch?v=' . $id,
+                'short_url'     => 'http://youtu.be/' . $id,
+                'category'      => (isset($info->{'media$group'}->{'media$category'}[0]->label)) ? $info->{'media$group'}->{'media$category'}[0]->label : null,
+                'duration'      => (isset($info->{'media$group'}->{'yt$duration'}->seconds)) ? $info->{'media$group'}->{'yt$duration'}->seconds : null,
+                'likes'         => (isset($info->{'yt$rating'}->numLikes)) ? $info->{'yt$rating'}->numLikes : null,
+                'dislikes'      => (isset($info->{'yt$rating'}->numDislikes)) ? $info->{'yt$rating'}->numDislikes : null,
+                'favoriteCount' => (isset($info->{'yt$statistics'}->favoriteCount)) ? $info->{'yt$statistics'}->favoriteCount : null,
+                'viewCount'     => (isset($info->{'yt$statistics'}->viewCount)) ? $info->{'yt$statistics'}->viewCount : null,
+                'commentsCount' => (isset($info->{'gd$comments'}->{'gd$feedLink'}->countHint)) ? $info->{'gd$comments'}->{'gd$feedLink'}->countHint : null,
+                'rating'        => (isset($info->{'gd$rating'}->average)) ? $info->{'gd$rating'}->average : null
             );
         } else if($this->_video_type == 'vimeo') {
             $info = json_decode(file_get_contents('http://vimeo.com/api/v2/video/' . $id . '.json'));
 
             return array(
-                'title' => $info[0]->title,
-                'description' => $info[0]->description,
-                'user_name' => $info[0]->user_name,
-                'user_url' => $info[0]->user_url,
-                'mobile_url' => $info[0]->mobile_url,
-                'stats_number_of_likes' => $info[0]->stats_number_of_likes,
-                'stats_number_of_plays' => $info[0]->stats_number_of_plays,
-                'stats_number_of_comments' => $info[0]->stats_number_of_comments,
-                'duration' => $info[0]->duration,
-                'tags' => $info[0]->tags
+                'title'                    => (isset($info[0]->title)) ? $info[0]->title : null,
+                'description'              => (isset($info[0]->description)) ? $info[0]->description : null,
+                'user_name'                => (isset($info[0]->user_name)) ? $info[0]->user_name : null,
+                'user_url'                 => (isset($info[0]->user_url)) ? $info[0]->user_url : null,
+                'mobile_url'               => (isset($info[0]->mobile_url)) ? $info[0]->mobile_url : null,
+                'stats_number_of_likes'    => (isset($info[0]->stats_number_of_likes)) ? $info[0]->stats_number_of_likes : null,
+                'stats_number_of_plays'    => (isset($info[0]->stats_number_of_plays)) ? $info[0]->stats_number_of_plays : null,
+                'stats_number_of_comments' => (isset($info[0]->stats_number_of_comments)) ? $info[0]->stats_number_of_comments : null,
+                'duration'                 => (isset($info[0]->duration)) ? $info[0]->duration : null,
+                'tags'                     => (isset($info[0]->tags)) ? $info[0]->tags : null
             );
         }
     }
